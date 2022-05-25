@@ -1,0 +1,54 @@
+service: SwapiAPI
+frameworkVersion: '3'
+useDotenv: true
+
+custom:
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  SWAPI_TABLE_NAME: swapi-register-${self:custom.stage}
+
+package:
+  patterns:
+    - '!package-lock.json'
+    - '!package.json'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20200924
+  region: ${self:custom.region}
+  environment: ${self:custom}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource: '*'
+
+plugins:
+  - serverless-plugin-typescript
+
+functions:
+  hello:
+    handler: src/functions/hello.handler
+    events:
+      - http:
+          path: swapi/hello
+          method: get
+          caching:
+            enabled: true
+
+resources:
+  Resources:
+    DynamoDbTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:custom.SWAPI_TABLE_NAME}
