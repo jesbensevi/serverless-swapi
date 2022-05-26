@@ -2,7 +2,7 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from 'aws-lambda
 import AWS from 'aws-sdk';
 import { formatJSONResponse } from '../../../common/utils/apiResponse';
 
-const { SWAPI_TABLE_NAME } = process.env;
+const { SWAPI_PERSONAS_TABLE_NAME } = process.env;
 
 export const handler = async (event: APIGatewayProxyEvent, _context: Context): Promise<APIGatewayProxyResult> => {
   try {
@@ -11,7 +11,7 @@ export const handler = async (event: APIGatewayProxyEvent, _context: Context): P
     const docClient = new AWS.DynamoDB.DocumentClient();
     const response = await docClient
       .get({
-        TableName: SWAPI_TABLE_NAME || '',
+        TableName: SWAPI_PERSONAS_TABLE_NAME || '',
         Key: {
           id: id.toString(),
         },

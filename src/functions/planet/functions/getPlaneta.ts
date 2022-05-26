@@ -2,24 +2,27 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from 'aws-lambda
 import AWS from 'aws-sdk';
 import { formatJSONResponse } from '../../../common/utils/apiResponse';
 
-const { SWAPI_PERSONAS_TABLE_NAME } = process.env;
+const { SWAPI_PLANETAS_TABLE_NAME } = process.env;
 
 export const handler = async (event: APIGatewayProxyEvent, _context: Context): Promise<APIGatewayProxyResult> => {
   try {
+    const id = event.pathParameters?.id ?? 1;
+
     const docClient = new AWS.DynamoDB.DocumentClient();
     const response = await docClient
-      .scan({
-        TableName: SWAPI_PERSONAS_TABLE_NAME || '',
+      .get({
+        TableName: SWAPI_PLANETAS_TABLE_NAME || '',
+        Key: {
+          id: id.toString(),
+        },
       })
       .promise();
-
-    if (!response.Items) {
-      return formatJSONResponse({ response: 'no hay datos en DynamoDB' }, 404);
+    console.log('Get planeta: ', response);
+    if (!response.Item) {
+      return formatJSONResponse({ response: 'no se encuentra en DynamoDB' }, 404);
     }
-
-    return formatJSONResponse(response.Items);
-  } catch (e) {
-    console.log('[ERROR]: ', e);
+    return formatJSONResponse(response.Item);
+  } catch {
     return formatJSONResponse({ response: 'error en la api' }, 500);
   }
 };

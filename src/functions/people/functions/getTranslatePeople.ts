@@ -1,7 +1,7 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { formatJSONResponse } from '../../../common/utils/apiResponse';
 import { httpGet } from '../../../common/utils/http';
-import { translatePeople } from '../../../common/utils/translatePeople';
+import { translatePeople } from '../utils/translatePeople';
 import { SWAPI_URL } from '../../../common/utils/consts';
 
 export const handler = async (event: APIGatewayProxyEvent, _context: Context): Promise<APIGatewayProxyResult> => {

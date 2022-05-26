@@ -1,4 +1,4 @@
-import { Persona, People } from '../../functions/people/model/persona';
+import { Persona, People } from '../model/persona';
 
 export const translatePeople = (people: People): Persona => {
   const persona: Persona = {

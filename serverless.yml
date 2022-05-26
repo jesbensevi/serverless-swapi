@@ -5,7 +5,8 @@ useDotenv: true
 custom:
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
-  SWAPI_TABLE_NAME: swapi-register-${self:custom.stage}
+  SWAPI_PERSONAS_TABLE_NAME: swapi-personas-${self:custom.stage}
+  SWAPI_PLANETAS_TABLE_NAME: swapi-planetas-${self:custom.stage}
 
 package:
   patterns:
@@ -63,9 +64,44 @@ functions:
           caching:
             enabled: true
 
+  # Endpoints relacionados a Planet de swapi
+  # getTranslatePlanet:
+  #   handler: src/functions/planet/functions/getTranslatePlanet.handler
+  #   events:
+  #     - http:
+  #         path: swapi/planet/{id}
+  #         method: get
+  #         caching:
+  #           enabled: true
+
+  saveTranslatePlanet:
+    handler: src/functions/planet/functions/saveTranslatePlanet.handler
+    events:
+      - http:
+          path: swapi/planet/{id}
+          method: post
+          caching:
+            enabled: true
+  getPlaneta:
+    handler: src/functions/planet/functions/getPlaneta.handler
+    events:
+      - http:
+          path: swapi/planeta/{id}
+          method: get
+          caching:
+            enabled: true
+  # getAllPlanets:
+  #   handler: src/functions/planet/functions/getAllPlanets.handler
+  #   events:
+  #     - http:
+  #         path: swapi/planets
+  #         method: get
+  #         caching:
+  #           enabled: true
+
 resources:
   Resources:
-    DynamoDbTable:
+    DynamoDbPersonaTable:
       Type: AWS::DynamoDB::Table
       Properties:
         AttributeDefinitions:
@@ -77,4 +113,18 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: ${self:custom.SWAPI_TABLE_NAME}
+        TableName: ${self:custom.SWAPI_PERSONAS_TABLE_NAME}
+
+    DynamoDbPlanetaTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:custom.SWAPI_PLANETAS_TABLE_NAME}

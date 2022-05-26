@@ -21,7 +21,7 @@ jest.mock('aws-sdk', () => {
 
 test('Should return all personas its be defined', async () => {
   process.env.AWS_REGION = 'us-east-1';
-  process.env.SWAPI_TABLE_NAME = 'swapi-register-dev';
+  process.env.SWAPI_PERSONAS_TABLE_NAME = 'swapi-register-dev';
   const event: APIGatewayProxyEvent = {
     ...(<any>{}),
   };

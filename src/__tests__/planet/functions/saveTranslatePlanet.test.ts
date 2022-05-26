@@ -1,5 +1,5 @@
 import { APIGatewayProxyEvent, Context } from 'aws-lambda';
-import { handler } from '../../../functions/people/functions/saveTranslatePeople';
+import { handler } from '../../../functions/planet/functions/saveTranslatePlanet';
 
 const mockDynamoDbPut = jest.fn().mockImplementation(() => {
   return {
@@ -19,9 +19,9 @@ jest.mock('aws-sdk', () => {
   };
 });
 
-test('should save persona', async () => {
+test('should save planet', async () => {
   process.env.AWS_REGION = 'us-east-1';
-  process.env.SWAPI_PERSONAS_TABLE_NAME = 'swapi-register-dev';
+  process.env.SWAPI_PLANETAS_TABLE_NAME = 'swapi-register-dev';
   const event: APIGatewayProxyEvent = {
     ...(<any>{}),
     pathParameters: {
@@ -29,14 +29,14 @@ test('should save persona', async () => {
     },
   };
   const context = {} as Context;
-  const createPersona = await handler(event, context);
+  const createPlanet = await handler(event, context);
 
-  expect(createPersona.statusCode).toEqual(201);
+  expect(createPlanet.statusCode).toEqual(201);
 });
 
-test('should response save persone to be Defined', async () => {
+test('should response save planet to be Defined', async () => {
   process.env.AWS_REGION = 'us-east-1';
-  process.env.SWAPI_PERSONAS_TABLE_NAME = 'swapi-register-dev';
+  process.env.SWAPI_PLANETAS_TABLE_NAME = 'swapi-register-dev';
   const event: APIGatewayProxyEvent = {
     ...(<any>{}),
     pathParameters: {
@@ -44,6 +44,6 @@ test('should response save persone to be Defined', async () => {
     },
   };
   const context = {} as Context;
-  const createPersona = await handler(event, context);
-  expect(createPersona).toBeDefined();
+  const createPlanet = await handler(event, context);
+  expect(createPlanet).toBeDefined();
 });
