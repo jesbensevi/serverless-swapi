@@ -28,11 +28,37 @@ plugins:
   - serverless-plugin-typescript
 
 functions:
-  hello:
-    handler: src/functions/hello.handler
+  # Endpoints relacionados a People en Swapi
+  getTranslatePeople:
+    handler: src/functions/people/functions/getTranslatePeople.handler
     events:
       - http:
-          path: swapi/hello
+          path: swapi/people/{id}
+          method: get
+          caching:
+            enabled: true
+
+  saveTranslatePeople:
+    handler: src/functions/people/functions/saveTranslatePeople.handler
+    events:
+      - http:
+          path: swapi/people/{id}
+          method: post
+          caching:
+            enabled: true
+  getPersona:
+    handler: src/functions/people/functions/getPersona.handler
+    events:
+      - http:
+          path: swapi/persona/{id}
+          method: get
+          caching:
+            enabled: true
+  getAllPersonas:
+    handler: src/functions/people/functions/getAllPersonas.handler
+    events:
+      - http:
+          path: swapi/personas
           method: get
           caching:
             enabled: true

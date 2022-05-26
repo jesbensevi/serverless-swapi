@@ -877,10 +877,10 @@
   "resolved" "https://registry.npmjs.org/@types/json-buffer/-/json-buffer-3.0.0.tgz"
   "version" "3.0.0"
 
-"@types/json-schema@^7.0.7":
-  "integrity" "sha512-YSBPTLTVm2e2OoQIDYx8HaeWJ5tTToLH67kXR7zYNGupXMEHa2++G8k+DczX2cFVgalypqtyZIcU19AFcmOpmg=="
-  "resolved" "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.8.tgz"
-  "version" "7.0.8"
+"@types/json-schema@^7.0.7", "@types/json-schema@^7.0.9":
+  "integrity" "sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ=="
+  "resolved" "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.11.tgz"
+  "version" "7.0.11"
 
 "@types/keyv@*":
   "integrity" "sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg=="
@@ -1339,6 +1339,14 @@
   "version" "0.21.4"
   dependencies:
     "follow-redirects" "^1.14.0"
+
+"axios@^0.27.2":
+  "integrity" "sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-0.27.2.tgz"
+  "version" "0.27.2"
+  dependencies:
+    "follow-redirects" "^1.14.9"
+    "form-data" "^4.0.0"
 
 "babel-jest@^27.0.6", "babel-jest@>=27.0.0 <28":
   "integrity" "sha512-iTJyYLNc4wRofASmofpOc5NK9QunwMk+TLFgGXsTFS8uEqmd8wdI7sga0FPe2oVH3b5Agt/EAK1QjPEuKL8VfA=="
@@ -3069,7 +3077,7 @@
   "resolved" "https://registry.npmjs.org/flatted/-/flatted-3.2.1.tgz"
   "version" "3.2.1"
 
-"follow-redirects@^1.14.0":
+"follow-redirects@^1.14.0", "follow-redirects@^1.14.9":
   "integrity" "sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ=="
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.0.tgz"
   "version" "1.15.0"
@@ -3087,6 +3095,15 @@
   "integrity" "sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg=="
   "resolved" "https://registry.npmjs.org/form-data/-/form-data-3.0.1.tgz"
   "version" "3.0.1"
+  dependencies:
+    "asynckit" "^0.4.0"
+    "combined-stream" "^1.0.8"
+    "mime-types" "^2.1.12"
+
+"form-data@^4.0.0":
+  "integrity" "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww=="
+  "resolved" "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz"
+  "version" "4.0.0"
   dependencies:
     "asynckit" "^0.4.0"
     "combined-stream" "^1.0.8"
@@ -4437,6 +4454,15 @@
     "path-loader" "^1.0.10"
     "slash" "^3.0.0"
     "uri-js" "^4.2.2"
+
+"json-schema-to-ts@^2.5.1":
+  "integrity" "sha512-0+SWFvC9aauIsFQ75vMPAVS9R6HvGP025amJx+BWYMPve3t8F8zn24ekvMHBtZEMSTbY41kwjhrFRj/6SJCApw=="
+  "resolved" "https://registry.npmjs.org/json-schema-to-ts/-/json-schema-to-ts-2.5.1.tgz"
+  "version" "2.5.1"
+  dependencies:
+    "@types/json-schema" "^7.0.9"
+    "ts-algebra" "^1.1.1"
+    "ts-toolbelt" "^9.6.0"
 
 "json-schema-traverse@^0.4.1":
   "integrity" "sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg=="
@@ -6592,6 +6618,13 @@
   dependencies:
     "escape-string-regexp" "^1.0.2"
 
+"ts-algebra@^1.1.1":
+  "integrity" "sha512-W43a3/BN0Tp4SgRNERQF/QPVuY1rnHkgCr/fISLY0Ycu05P0NWPYRuViU8JFn+pFZuY6/zp9TgET1fxMzppR/Q=="
+  "resolved" "https://registry.npmjs.org/ts-algebra/-/ts-algebra-1.1.1.tgz"
+  "version" "1.1.1"
+  dependencies:
+    "ts-toolbelt" "^9.6.0"
+
 "ts-jest@^27.0.4":
   "integrity" "sha512-c4E1ECy9Xz2WGfTMyHbSaArlIva7Wi2p43QOMmCqjSSjHP06KXv+aT+eSY+yZMuqsMi3k7pyGsGj2q5oSl5WfQ=="
   "resolved" "https://registry.npmjs.org/ts-jest/-/ts-jest-27.0.4.tgz"
@@ -6623,6 +6656,11 @@
     "make-error" "^1.1.1"
     "source-map-support" "^0.5.17"
     "yn" "3.1.1"
+
+"ts-toolbelt@^9.6.0":
+  "integrity" "sha512-nsZd8ZeNUzukXPlJmTBwUAuABDe/9qtVDelJeT/qW0ow3ZS3BsQJtNkan1802aM9Uf68/Y8ljw86Hu0h5IUW3w=="
+  "resolved" "https://registry.npmjs.org/ts-toolbelt/-/ts-toolbelt-9.6.0.tgz"
+  "version" "9.6.0"
 
 "tsconfig-paths@^3.10.1", "tsconfig-paths@^3.9.0":
   "integrity" "sha512-rETidPDgCpltxF7MjBZlAFPUHv5aHH2MymyPvh+vEyWAED4Eb/WeMbsnD/JDr4OKPOA1TssDHgIcpTN5Kh0p6Q=="
